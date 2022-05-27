@@ -1,13 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import {BrowserRouter , Routes , Route} from 'react-router-dom'
+import {Provider} from 'react-redux'
+import Popular from './Components/Popular';
+import Headers  from './Components/Headers';
+import Search from './Components/Search'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<App/>}>
+        <Route index element={<Headers/>}/>
+        <Route path = '/popular' element={<Popular/>}/>
+        <Route path='/search/:query' element={<Search/>}/>
+      </Route>
+    </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
